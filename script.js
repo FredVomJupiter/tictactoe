@@ -14,6 +14,8 @@ let idList = [
 
 let playerTurn = true;
 
+let counter = 0;
+
 
 // Sounds
 const sensor = new Audio("sounds/sensor.mp3");
@@ -36,6 +38,7 @@ function start() {
 
 
 function action(id, field) {
+    counter++;
     if (playerTurn) {
         click.play();
         if (matrix[field] == 0) {
@@ -173,6 +176,7 @@ function createSpecialEffects(id) {
 
 
 function restart() {
+    counter = 0;
     location.reload(); 
 }
 

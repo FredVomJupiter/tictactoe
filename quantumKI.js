@@ -17,10 +17,10 @@ let urgentIndex;
 
 function initiateQuantumKI() {
     if (matrixHasEmptyField()) {
-        analyzeThreatFields();
-        analyzeOpportunityFields();
-        drawCalculatedMap();
-        calculateNextMove();
+        //analyzeThreatFields();
+        //analyzeOpportunityFields();
+        //drawCalculatedMap();
+        //calculateNextMove();
         makeMove();
     } else {
         message('draw');
@@ -36,7 +36,7 @@ function matrixHasEmptyField() {
     }
 }
 
-
+/*
 function analyzeThreatFields() {
     for (let index = 0; index < matrix.length; index++) {
         if (matrix[index] == "X") {
@@ -59,8 +59,9 @@ function analyzeOpportunityFields() {
         }
     }
 }
+*/
 
-
+/*
 function drawCalculatedMap() {
     for (let index = 0; index < threatFields.length; index++) {
         calculatedMap[threatFields[index]] = "X";
@@ -69,8 +70,8 @@ function drawCalculatedMap() {
         calculatedMap[opportunityFields[index]] = "O";
     }
 }
-
-
+*/
+/*
 function calculateNextMove() {
     for (let index = 0; index < threatFields.length; index++) {
         if (threatFields[index] == 0) {
@@ -131,8 +132,9 @@ function calculateNextMove() {
         }
     }
 }
+*/
 
-
+/*
 function calculateThreat(fields) {
     for (let index = 0; index < fields.length; index++) {
         if (calculatedMap[fields[index]] != "X" & calculatedMap[fields[index]] != "O") {
@@ -149,15 +151,24 @@ function calculateOpportunity(fields) {
         }
     }
 }
-
+*/
 
 function makeMove() {
-    let max = 0;
-    let field;
-    if (matrix[4] == 0) {
-        let higherGround = document.getElementById(idList[4]);
-        matrix[4] = "O";
-        higherGround.innerHTML = "O";
+    if ((matrix[0] == "X" || matrix[2] == "X" || matrix[6] == "X" || matrix[8] == "X")& counter == 1) {
+        urgentIndex = 4;
+        let bestField = document.getElementById(idList[urgentIndex]);
+        matrix[urgentIndex] = "O";
+        bestField.innerHTML = "O";
+    } else if (matrix[4] == "X" & counter == 1) {
+        urgentIndex = 2;
+        let bestField = document.getElementById(idList[urgentIndex]);
+        matrix[urgentIndex] = "O";
+        bestField.innerHTML = "O";
+    } else if (matrix[4] == 0 & counter == 1) {
+        urgentIndex = 4;
+        let bestField = document.getElementById(idList[urgentIndex]);
+        matrix[urgentIndex] = "O";
+        bestField.innerHTML = "O";
     } else if (twoFriendlyInRow()) {
         let bestField = document.getElementById(idList[urgentIndex]);
         matrix[urgentIndex] = "O";
@@ -167,17 +178,21 @@ function makeMove() {
         let bestField = document.getElementById(idList[urgentIndex]);
         matrix[urgentIndex] = "O";
         bestField.innerHTML = "O";
+    } else if (matrix[6] == "X" & counter == 2) {
+        urgentIndex = 8;
+        let bestField = document.getElementById(idList[urgentIndex]);
+        matrix[urgentIndex] = "O";
+        bestField.innerHTML = "O";
     }
     else {
-        for (let index = 0; index < calculatedMap.length; index++) {
-            if (calculatedMap[index] > max) {
-                max = calculatedMap[index];
-                field = index;
-            }
-        }
-        let bestField = document.getElementById(idList[field]);
-        matrix[field] = "O";
-        bestField.innerHTML = "O";
+        let randomField = Math.floor(Math.random() * 9);
+        if (matrix[randomField] != 0) {
+            makeMove();
+        } else {
+            let move = document.getElementById(idList[randomField]);
+            matrix[randomField] = "O";
+            move.innerHTML = "O";
+        }   
     }
 }
 
