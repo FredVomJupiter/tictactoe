@@ -12,6 +12,7 @@ let idList = [
 
 let playerTurn = true;
 
+// counts the number of turns the player has finished
 let counter = 0;
 
 // Sounds

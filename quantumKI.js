@@ -1,4 +1,4 @@
-// Index empty field with 2x"O" in a row
+// used to store the most urgend field the computer has to handle
 let urgentIndex;
 
 
@@ -11,6 +11,10 @@ function initiateQuantumKI() {
 }
 
 
+/**
+ * 
+ * @returns true if an empty field ist still available, otherwise false
+ */
 function matrixHasEmptyField() {
     if (matrix.includes(0)) {
         return true;
@@ -47,6 +51,10 @@ function openingMoves() {
 }
 
 
+/**
+ * Computers first turn, if player chooses one of the 4 corners in first turn
+ * @returns true if one of the corners was choosen by the player in his first turn
+ */
 function checkCorners() {
     if ((matrix[0] == "X" || matrix[2] == "X" || matrix[6] == "X" || matrix[8] == "X")& counter == 1) {
         return true;
