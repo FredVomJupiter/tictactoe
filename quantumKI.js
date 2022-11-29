@@ -25,22 +25,25 @@ function matrixHasEmptyField() {
 
 
 function makeMove() {
-    openingMoves();
-    if (twoFriendlyInRow()) {
-        fillField(urgentIndex);
-    } else if (twoThreatsInRow()) {
-        alerti.play();
-        fillField(urgentIndex);
-    } else if (matrix[6] == "X" & counter == 2) {
-        fillField(8);
-    }
-    else {
-        fillRandomField(); 
+    if (counter == 1) {
+        openingMove();
+    } else {
+        if (twoFriendlyInRow()) {
+            fillField(urgentIndex);
+        } else if (twoThreatsInRow()) {
+            alerti.play();
+            fillField(urgentIndex);
+        } else if (matrix[6] == "X" & counter == 2) {
+            fillField(8);
+        }
+        else {
+            fillRandomField(); 
+        }
     }
 }
 
 
-function openingMoves() {
+function openingMove() {
     if (checkCorners()) {
         fillField(4);
     } else if (matrix[4] == "X" & counter == 1) {
@@ -49,7 +52,6 @@ function openingMoves() {
         fillField(4);
     }
 }
-
 
 /**
  * Computers first turn, if player chooses one of the 4 corners in first turn
@@ -75,7 +77,7 @@ function fillField(index) {
 function fillRandomField() {
     let randomField = Math.floor(Math.random() * 9);
         if (matrix[randomField] != 0) {
-            makeMove();
+            fillRandomField();
         } else {
             fillField(randomField);
         }  
