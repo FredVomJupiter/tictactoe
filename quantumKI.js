@@ -21,46 +21,56 @@ function matrixHasEmptyField() {
 
 
 function makeMove() {
-    if ((matrix[0] == "X" || matrix[2] == "X" || matrix[6] == "X" || matrix[8] == "X")& counter == 1) {
-        urgentIndex = 4;
-        let bestField = document.getElementById(idList[urgentIndex]);
-        matrix[urgentIndex] = "O";
-        bestField.innerHTML = "O";
-    } else if (matrix[4] == "X" & counter == 1) {
-        urgentIndex = 2;
-        let bestField = document.getElementById(idList[urgentIndex]);
-        matrix[urgentIndex] = "O";
-        bestField.innerHTML = "O";
-    } else if (matrix[4] == 0 & counter == 1) {
-        urgentIndex = 4;
-        let bestField = document.getElementById(idList[urgentIndex]);
-        matrix[urgentIndex] = "O";
-        bestField.innerHTML = "O";
-    } else if (twoFriendlyInRow()) {
-        let bestField = document.getElementById(idList[urgentIndex]);
-        matrix[urgentIndex] = "O";
-        bestField.innerHTML = "O";
+    openingMoves();
+    if (twoFriendlyInRow()) {
+        fillField(urgentIndex);
     } else if (twoThreatsInRow()) {
         alerti.play();
-        let bestField = document.getElementById(idList[urgentIndex]);
-        matrix[urgentIndex] = "O";
-        bestField.innerHTML = "O";
+        fillField(urgentIndex);
     } else if (matrix[6] == "X" & counter == 2) {
-        urgentIndex = 8;
-        let bestField = document.getElementById(idList[urgentIndex]);
-        matrix[urgentIndex] = "O";
-        bestField.innerHTML = "O";
+        fillField(8);
     }
     else {
-        let randomField = Math.floor(Math.random() * 9);
+        fillRandomField(); 
+    }
+}
+
+
+function openingMoves() {
+    if (checkCorners()) {
+        fillField(4);
+    } else if (matrix[4] == "X" & counter == 1) {
+        fillField(2);
+    } else if (matrix[4] == 0 & counter == 1) {
+        fillField(4);
+    }
+}
+
+
+function checkCorners() {
+    if ((matrix[0] == "X" || matrix[2] == "X" || matrix[6] == "X" || matrix[8] == "X")& counter == 1) {
+        return true;
+    } else {
+        return false;
+    } 
+}
+
+
+function fillField(index) {
+    urgentIndex = index;
+    let targetField = document.getElementById(idList[urgentIndex]);
+    matrix[urgentIndex] = "O";
+    targetField.innerHTML = "O";
+}
+
+
+function fillRandomField() {
+    let randomField = Math.floor(Math.random() * 9);
         if (matrix[randomField] != 0) {
             makeMove();
         } else {
-            let move = document.getElementById(idList[randomField]);
-            matrix[randomField] = "O";
-            move.innerHTML = "O";
-        }   
-    }
+            fillField(randomField);
+        }  
 }
 
 /**
