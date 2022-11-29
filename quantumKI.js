@@ -1,26 +1,9 @@
-// Threat Fields collecting player's moves
-let threatFields = [];
-
-// Opportunity Fields collecting friendly moves
-let opportunityFields = [];
-
-// Calculated Map
-let calculatedMap = [
-    0, 0, 0,
-    0, 0, 0,
-    0, 0, 0
-];
-
 // Index empty field with 2x"O" in a row
 let urgentIndex;
 
 
 function initiateQuantumKI() {
     if (matrixHasEmptyField()) {
-        //analyzeThreatFields();
-        //analyzeOpportunityFields();
-        //drawCalculatedMap();
-        //calculateNextMove();
         makeMove();
     } else {
         message('draw');
@@ -36,122 +19,6 @@ function matrixHasEmptyField() {
     }
 }
 
-/*
-function analyzeThreatFields() {
-    for (let index = 0; index < matrix.length; index++) {
-        if (matrix[index] == "X") {
-            if (!threatFields.includes(index)) {
-                let threat = index;
-                threatFields.push(threat);
-            }
-        }
-    }
-}
-
-
-function analyzeOpportunityFields() {
-    for (let index = 0; index < matrix.length; index++) {
-        if (matrix[index] == "O") {
-            if (!opportunityFields.includes(index)) {
-                let opportunity = index;
-                opportunityFields.push(opportunity);
-            }
-        }
-    }
-}
-*/
-
-/*
-function drawCalculatedMap() {
-    for (let index = 0; index < threatFields.length; index++) {
-        calculatedMap[threatFields[index]] = "X";
-    }
-    for (let index = 0; index < opportunityFields.length; index++) {
-        calculatedMap[opportunityFields[index]] = "O";
-    }
-}
-*/
-/*
-function calculateNextMove() {
-    for (let index = 0; index < threatFields.length; index++) {
-        if (threatFields[index] == 0) {
-            calculateThreat([1, 3, 4]);
-        }
-        if (threatFields[index] == 1) {
-            calculateThreat([0, 4, 2]);
-        }
-        if (threatFields[index] == 2) {
-            calculateThreat([1, 4, 5]);
-        }
-        if (threatFields[index] == 3) {
-            calculateThreat([0, 4, 6]);
-        }
-        if (threatFields[index] == 4) {
-            calculateThreat([0, 1, 2, 3, 5, 6, 7, 8]);
-        }
-        if (threatFields[index] == 5) {
-            calculateThreat([2, 4, 8]);
-        }
-        if (threatFields[index] == 6) {
-            calculateThreat([3, 4, 7]);
-        }
-        if (threatFields[index] == 7) {
-            calculateThreat([6, 4, 8]);
-        }
-        if (threatFields[index] == 8) {
-            calculateThreat([7, 4, 5]);
-        }
-    }
-    for (let index = 0; index < opportunityFields.length; index++) {
-        if (opportunityFields[index] == 0) {
-            calculateOpportunity([1, 3, 4]);
-        }
-        if (opportunityFields[index] == 1) {
-            calculateOpportunity([0, 4, 2]);
-        }
-        if (opportunityFields[index] == 2) {
-            calculateOpportunity([1, 4, 5]);
-        }
-        if (opportunityFields[index] == 3) {
-            calculateOpportunity([0, 4, 6]);
-        }
-        if (opportunityFields[index] == 4) {
-            calculateOpportunity([0, 1, 2, 3, 5, 6, 7, 8]);
-        }
-        if (opportunityFields[index] == 5) {
-            calculateOpportunity([2, 4, 8]);
-        }
-        if (opportunityFields[index] == 6) {
-            calculateOpportunity([3, 4, 7]);
-        }
-        if (opportunityFields[index] == 7) {
-            calculateOpportunity([6, 4, 8]);
-        }
-        if (opportunityFields[index] == 8) {
-            calculateOpportunity([7, 4, 5]);
-        }
-    }
-}
-*/
-
-/*
-function calculateThreat(fields) {
-    for (let index = 0; index < fields.length; index++) {
-        if (calculatedMap[fields[index]] != "X" & calculatedMap[fields[index]] != "O") {
-            calculatedMap[fields[index]]++;
-        }
-    }
-}
-
-
-function calculateOpportunity(fields) {
-    for (let index = 0; index < fields.length; index++) {
-        if (calculatedMap[fields[index]] != "X" & calculatedMap[fields[index]] != "O") {
-            calculatedMap[fields[index]] += 2;
-        }
-    }
-}
-*/
 
 function makeMove() {
     if ((matrix[0] == "X" || matrix[2] == "X" || matrix[6] == "X" || matrix[8] == "X")& counter == 1) {

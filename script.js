@@ -4,32 +4,23 @@ let matrix = [
     0, 0, 0
 ];
 
-
 let idList = [
     "topLeft", "topMiddle", "topRight",
     "midLeft", "midMiddle", "midRight",
     "lowLeft", "lowMiddle", "lowRight"
 ]
 
-
 let playerTurn = true;
 
 let counter = 0;
 
-
 // Sounds
 const sensor = new Audio("sounds/sensor.mp3");
-sensor.src = 'https://www.frederic-rieg.developerakademie.net/tictactoe/sounds/sensor.mp3';
 const alerti = new Audio("sounds/alert.mp3");
-alerti.src = 'https://www.frederic-rieg.developerakademie.net/tictactoe/sounds/alert.mp3';
 const click = new Audio("sounds/click.mp3");
-click.src = 'https://www.frederic-rieg.developerakademie.net/tictactoe/sounds/click.mp3';
 const computer = new Audio("sounds/computer.mp3");
-computer.src = 'https://www.frederic-rieg.developerakademie.net/tictactoe/sounds/computer.mp3';
 const transmission = new Audio("sounds/transmission.mp3");
-transmission.src = 'https://www.frederic-rieg.developerakademie.net/tictactoe/sounds/transmission.mp3';
 const borg = new Audio("sounds/borg.mp3");
-borg.src = 'https://www.frederic-rieg.developerakademie.net/tictactoe/sounds/borg.mp3';
 
 
 function start() {
