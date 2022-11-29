@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body onload="start()">
+    <div class="frame">
+        <h1>Tic Tac Toe</h1>
+        <div class="grid-container">
+            <div class="grid-item" id="topLeft" onmousedown="action('topLeft', 0)"></div>
+            <div class="grid-item" id="topMiddle" onmousedown="action('topMiddle', 1)"></div>
+            <div class="grid-item" id="topRight" onmousedown="action('topRight', 2)"></div>
+            <div class="grid-item" id="midLeft" onmousedown="action('midLeft', 3)"></div>
+            <div class="grid-item" id="midMiddle" onmousedown="action('midMiddle', 4)"></div>
+            <div class="grid-item" id="midRight" onmousedown="action('midRight', 5)"></div>
+            <div class="grid-item" id="lowLeft" onmousedown="action('lowLeft', 6)"></div>
+            <div class="grid-item" id="lowMiddle" onmousedown="action('lowMiddle', 7)"></div>
+            <div class="grid-item" id="lowRight" onmousedown="action('lowRight', 8)"></div>
+        </div>
+
+    </div>
+    <div class="footer">
+        <span id="message">Du bist am Zug!</span>
+        <button class="btn" onclick="restart()">RESTART</button>
+        <span>Sounds from <a style="color:white" href="https://www.trekcore.com/audio/">https://www.trekcore.com/audio/</a></span>
+    </div>
+
+
+    <script src="script.js"></script>
+    <script src="quantumKI.js"></script>
+</body>
+
+</html>
